@@ -67,7 +67,7 @@ const Footer = () => {
       {/* Bottom line */}
       <div className="footer-bottom">
         <span>
-          © {new Date().getFullYear()} MJ Caterings. All rights reserved(Absoltix Solutions).
+          © {new Date().getFullYear()} MJ Caterings. All rights reserved(Absoltix Solution).
         </span>
       </div>
     </footer>
