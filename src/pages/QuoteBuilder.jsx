@@ -130,21 +130,26 @@ ${form.notes || "-"}
     `.trim();
   };
 
+
   const handleSubmit = (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!form.customerName || !form.customerPhone || !form.eventType) {
-      alert("Please fill at least Name, Phone and Event Type.");
-      return;
-    }
+  if (!form.customerName || !form.customerPhone || !form.eventType) {
+    alert("Please fill at least Name, Phone and Event Type.");
+    return;
+  }
 
-    const msg = buildWhatsAppMessage();
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-      msg
-    )}`;
+  // Fire Meta Pixel Lead event
+  if (window.fbq) {
+    window.fbq('track', 'Lead');
+  }
 
-    window.open(url, "_blank");
-  };
+  const msg = buildWhatsAppMessage();
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+
+  window.open(url, "_blank");
+};
+  
 
   const groupedMenu = menu.reduce((acc, item) => {
     if (!acc[item.category]) acc[item.category] = [];
