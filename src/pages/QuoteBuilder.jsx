@@ -149,7 +149,11 @@ ${form.notes || "-"}
       return;
     }
 
-    if (window.fbq) window.fbq("track", "Lead");
+
+  if (window.fbq) {
+    window.fbq("track", "Lead");
+    window.fbq("track", "CompleteRegistration"); 
+  }
 
     const msg = buildWhatsAppMessage();
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
